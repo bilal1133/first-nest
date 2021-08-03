@@ -4,8 +4,8 @@ import { Products } from './products.model';
 export class ProductService {
   products: Products[] = [];
 
-  insertProducts(title: String, description: String, price: number): Products {
-    let product = new Products(
+  insertProducts(title: string, description: string, price: number): Products {
+    const product = new Products(
       this.products.length.toString(),
       title,
       description,
@@ -13,5 +13,12 @@ export class ProductService {
     );
     this.products.push(product);
     return product;
+  }
+
+  getProducts(): Products[] {
+    return this.products;
+  }
+  editProduct(): any {
+    return this.products.find((single) => {});
   }
 }
