@@ -1,4 +1,12 @@
-import { Controller, Get, Body, Post, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Body,
+  Post,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ProductService } from './products.service';
 
 @Controller('products')
@@ -17,8 +25,16 @@ export class ProductsCotroller {
   getProducts(): any {
     return this.productService.getProducts();
   }
+  @Get(':id')
+  getSingleProducts(@Param('id') pId: string): any {
+    return this.productService.getSingleProducts(pId);
+  }
   @Put()
   editProduct(): any {
     return this.productService.editProduct();
+  }
+  @Delete(':id')
+  deleteProduct(@Param('id') pId: string): any {
+    return this.productService.deleteProduct(pId);
   }
 }
